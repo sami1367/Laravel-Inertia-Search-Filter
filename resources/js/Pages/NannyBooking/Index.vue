@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-5">
       <h1>Nanny Bookings</h1>
+      <FilterForm @apply-filters="handleApplyFilters" @reset-filters="handleResetFilters" />
       <table class="table table-striped">
         <thead>
           <tr>
@@ -29,7 +30,12 @@
 </template>
   
 <script>
+  import FilterForm from '@/components/FilterForm.vue';
+
   export default {
+    components: {
+      FilterForm,
+    },
     props: {
       nannyBookings: Array,
     },
@@ -37,6 +43,14 @@
       formatDateTime(dateTime) {
         const options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
         return new Date(dateTime).toLocaleString('en-US', options);
+      },
+      handleApplyFilters(filterValue) {
+        // Using Inertia's reload method for internal redirects
+        this.$inertia.reload({ data: { filter_value: filterValue } });
+      },
+      handleResetFilters() {
+        // Reset the filter value and reload the page
+        this.$inertia.reload({ data: { filter_value: '' } });
       },
     },
   };

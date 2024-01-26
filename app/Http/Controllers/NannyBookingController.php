@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\NannyBooking;
 use App\Http\Resources\NannyBookingResource;
+use Illuminate\Http\Request;
 
 class NannyBookingController extends Controller
 {
@@ -14,14 +15,16 @@ class NannyBookingController extends Controller
      * transforms them into a resource collection, and passes the collection
      * to the Inertia view for rendering the NannyBooking index page.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Inertia\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Retrieve all nanny bookings with associated user information
-        $nannyBookings = NannyBookingResource::collection(NannyBooking::with('user')->get());
+        // Retrieve all nanny bookings with associated user information and apply filters
+        $nannyBookings = NannyBookingResource::collection(
+            NannyBooking::with('user')->filter(['filter_value' => $request->input('filter_value')])->get()
+        );
 
-        // Pass the nanny bookings to the Inertia view
         return Inertia::render('NannyBooking/Index', [
             'nannyBookings' => $nannyBookings,
         ]);
