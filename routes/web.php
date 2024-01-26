@@ -14,6 +14,4 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Index');
-});
+Route::get('/', [App\Http\Controllers\NannyBookingController::class, 'index'])->name('nanny-booking-index');
