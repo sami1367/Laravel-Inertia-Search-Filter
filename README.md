@@ -68,6 +68,3 @@ Make sure you have the following installed on your local machine:
 - **Clean Code:** Follows best practices for clean and maintainable code.
 - **Filtering Mechanism:** Implement a reusable filtering mechanism for nanny bookings.
 
-## Video Presentation
-
-[Watch the Video Presentation](https://youtu.be/eH9AajZ5HA0)
