@@ -1,4 +1,4 @@
-# Nina.care Laravel & Inertia.js Assessment
+# Laravel & Inertia.js Search Filter Example
 
 This project is a full-stack web application developed as part of the Nina.care Laravel & Inertia.js assessment. The application is built using the Laravel framework for the backend and Inertia.js with Vue.js for the frontend.
 
